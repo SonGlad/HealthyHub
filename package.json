@@ -1,8 +1,8 @@
 {
-  "name": "health_en",
+  "name": "healthy_hub",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://SonGlad.github.io/HEALTH_EN/",
+  "homepage": "https://SonGlad.github.io/HealthyHub/",
   "dependencies": {
     "@babel/plugin-transform-private-property-in-object": "^7.23.4",
     "@reduxjs/toolkit": "^2.0.1",
