@@ -21,7 +21,7 @@
     "react-dom": "^18.1.0",
     "react-lazy": "^1.1.0",
     "react-redux": "^9.0.4",
-    "react-router-dom": "^6.20.1",
+    "react-router-dom": "^6.21.1",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.8",
     "react-toastify": "^9.1.3",

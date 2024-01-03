@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const ListWrapper = styled.div`
   display: flex;
-
+  
+  
   .number-list {
     display: flex;
     flex-direction: column;
@@ -75,7 +76,6 @@ export const ListWrapper = styled.div`
         display: flex;
         gap: 6px;
         color: ${props => props.theme.color.primary_white};
-        /* width: 30px; */
         font-size: 12px;
         font-weight: 400;
         line-height: 1.5;
@@ -126,7 +126,6 @@ export const AddButton = styled.button`
 
 export const EditButton = styled.button`
   display: flex;
-  /* align-items: center; */
   cursor: pointer;
   padding: 0;
   gap: 6px;

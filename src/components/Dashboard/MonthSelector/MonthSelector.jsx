@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
 import { BackLink, Container } from './MonthSelector.styled';
 import { ReactComponent as ArrowIcon } from '../../../images/icons-linear/arrow-left.svg';
 import { ReactComponent as ArrowDown } from '../../../images/icons-linear/arrow-down.svg';
+import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { getStatistics } from '../../../redux/Data/data-operations';
 import months from '../../../utils/months.json';
@@ -61,7 +61,7 @@ export const MonthSelector = () => {
   return (
     <Container>
       <div>
-        <BackLink to={'/main'}>
+        <BackLink to={'/'}>
           <ArrowIcon alt="Arrow Icon" />
         </BackLink>
         <div className="select" ref={dropdownRef}>

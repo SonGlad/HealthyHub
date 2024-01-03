@@ -11,13 +11,8 @@ import { BreakfastDishes } from './Dishes/BreakfastDishes';
 import { useData } from 'hooks/useUserData';
 
 
-
 export const Breakfast = () => {
-  const {
-    breakfastTotalFat,
-    breakfastTotalCarbonohidretes,
-    breakfasthTotalProtein,
-  } = useData();
+  const {breakfastTotalFat, breakfastTotalCarbonohidretes, breakfasthTotalProtein} = useData();
 
 
   return (

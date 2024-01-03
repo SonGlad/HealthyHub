@@ -9,8 +9,8 @@ export const ModalContainer = styled.div`
   width: 300px;
   height: 546px;
   padding-top: 16px;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 11px;
+  padding-right: 11px;
   padding-bottom: 40px;
   border-radius: 12px;
   background: ${(props) => props.theme.color.primary_black_2};
@@ -18,7 +18,7 @@ export const ModalContainer = styled.div`
   @media only screen and (min-width: 834px) {
     width: 708px;
     height: 408px;
-    padding: 24px;
+    padding: 23px;
   }
 
   .H2 {
@@ -273,10 +273,10 @@ export const ModalContainer = styled.div`
   }
 
   ::-webkit-scrollbar {
-    width: 0px;
+    width: 1px;
   }
   ::-webkit-scrollbar-thumb {
     border-radius: 20px;
-    background-color: #fff;
+    background-color: ${(props) => props.theme.color.primary_grey};
   }
 `;

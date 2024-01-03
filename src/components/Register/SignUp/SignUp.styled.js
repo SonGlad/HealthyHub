@@ -93,7 +93,7 @@ export const DivSingUp = styled.div`
   .Form {
     display: grid;
     margin-top: 24px;
-    gap: 20px;
+    gap: 32px;
 
     @media only screen and (min-width: 834px) {
       padding-left: 24px;
@@ -107,7 +107,7 @@ export const DivSingUp = styled.div`
   }
 
   .ButtonNext {
-    margin-top: 12px;
+    margin-top: 8px;
     border-radius: 12px;
     color: ${props => props.theme.color.primary_black_2};
     background: ${props => props.theme.color.primary_green_lite};

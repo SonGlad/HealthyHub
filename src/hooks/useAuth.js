@@ -14,6 +14,7 @@ import {
     selectLoading,
     selectRefreshing,
     selectInitial,
+    selectUserLocation,
 } from "../redux/Auth/auth-selectors";
 
 
@@ -31,7 +32,8 @@ export const useAuth = () => {
     const userHeight = useSelector(selectUserHeight);
     const userWeight = useSelector(selectUserWeight);
     const userActivity = useSelector(selectUserActivity);
-    const userAvatarURL = useSelector(selectUserAvatarURL); 
+    const userAvatarURL = useSelector(selectUserAvatarURL);
+    const userLocation = useSelector(selectUserLocation); 
 
 
     return {
@@ -49,5 +51,6 @@ export const useAuth = () => {
         userWeight,
         userActivity,
         userAvatarURL,
+        userLocation,
     };
 };

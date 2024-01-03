@@ -11,7 +11,6 @@ import { useData } from 'hooks/useUserData';
 import { DinnerDishes } from './Dishes/DinnerDishes';
 
 
-
 export const Dinner = () => {
   const { dinnerTotalCarbonohidretes, dinnerTotalFat, dinnerTotalProtein } = useData();
 

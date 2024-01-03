@@ -4,12 +4,14 @@ import { BackLink, Title } from './Diary.styled';
 import { ReactComponent as ArrowIcon } from '../../images/icons-linear/arrow-left.svg';
 import { FoodInfo } from 'components/Dairy/FoodInfo';
 
+
 const DiaryPage = () => {
+
   return (
     <Section>
       <Container>
         <Title>
-          <BackLink to={'/main'}>
+          <BackLink to={'/'}>
             <ArrowIcon alt="Arrow Icon" />
           </BackLink>
           <h1>Dairy</h1>

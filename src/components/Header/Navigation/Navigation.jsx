@@ -7,7 +7,7 @@ import {ReactComponent as HeaderLogo} from "../../../images/svgIcon/HealthyHub.s
 export const Navigation = () => {
   return (
     <NavigationStyles>
-      <NavLink className="link" to="/home">
+      <NavLink className="link" to="/">
         <HeaderLogo className='header-logo' width="102" height="22"/>
       </NavLink>
     </NavigationStyles>

@@ -1,13 +1,14 @@
 import { SharedLayout } from "./Shared.Layout";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation, useNavigate} from "react-router-dom";
 import { lazy, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch} from "react-redux";
 import { PrivateRoute } from "./PrivateRoute";
 import { RestrictedRoute } from "./RestrictedRoute";
 import { RefreshLoading } from "../components/CustomLoaders/CustomLoaders";
 import { Toaster } from "./ToastContainer/ToastContainer";
 import {getUserDailyCurrentData, getAllRecommendedFood} from "../redux/Data/data-operations";
 import { initialDataUserInfo, refreshCurrentUser } from '../redux/Auth/auth-operations';
+import {saveUserCurrentLocation} from "../redux/Auth/auth-slice"
 import { useAuth } from "../hooks/useAuth";
 
 
@@ -25,7 +26,9 @@ const SettingsPage = lazy(() => import('../pages/Settings/Settings'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  const {isRefreshing, isInitial, isLoggedIn} = useAuth();
+  const navigate = useNavigate();
+  const currentPath = useLocation().pathname;
+  const {isRefreshing, isInitial, isLoggedIn, userLocation} = useAuth();
 
 
   useEffect(() => {
@@ -38,8 +41,11 @@ export const App = () => {
   useEffect(() => {
     if(!isInitial){
       dispatch(refreshCurrentUser());
+      if (userLocation) {
+        navigate(userLocation);
+      }
     }
-  }, [dispatch, isInitial]);
+  }, [dispatch, isInitial, navigate, userLocation]);
   
   
   useEffect(() => {
@@ -48,6 +54,12 @@ export const App = () => {
       dispatch(getAllRecommendedFood());
     }
   }, [dispatch, isLoggedIn]);
+
+
+  useEffect(() =>{
+    dispatch(saveUserCurrentLocation(currentPath))
+  },[currentPath, dispatch]);
+
 
 
   return isRefreshing ? (

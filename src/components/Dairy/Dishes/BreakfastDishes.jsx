@@ -64,7 +64,6 @@ export const BreakfastDishes = () => {
           <li className="list-item" key={item.mealId}>
             <div className="wrapper">
               <p className="dish-title">{item.name}</p>
-
               <div className="nutrients-wrapper">
                 <p className="value">
                   <span>Carb.</span>

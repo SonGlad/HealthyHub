@@ -40,6 +40,7 @@ const initialState = {
   isRefreshing: false,
   isInitial: false,
   error: null,
+  currentLocation: null,
 };
 
 
@@ -87,6 +88,9 @@ const authSlice = createSlice({
         activity: action.payload,
       }
     },
+    saveUserCurrentLocation:(state, action) => {
+      state.currentLocation = action.payload
+    }
   },
 
   extraReducers: builder => {
@@ -213,6 +217,7 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
       state.isInitial = false;
       state.error = null;
+      state.currentLocation = null;
     })
     .addCase(logOut.rejected, (state, {payload}) => {
       state.isLoggedIn = false;
@@ -379,7 +384,7 @@ export const {
   updateBodyParamFormHeight,
   updateBodyParamFormWeight,
   updateActivityForm,
-
+  saveUserCurrentLocation,
 } = authSlice.actions;
 
 

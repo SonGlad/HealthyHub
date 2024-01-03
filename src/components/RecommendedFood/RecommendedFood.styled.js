@@ -15,27 +15,30 @@ export const Container = styled.div`
       font-size: 22px;
       line-height: 1.5;
       padding-top: 20px;
-      }
-      @media (min-width: 1440px) {
-    padding-top: 20px;
-   
+    }
+
+    @media (min-width: 1440px) {
+      padding-top: 20px;
+    }
   }
-  }
+
+
   ul {
     display: flex;
     flex-direction: column;
     gap: 20px;
     margin-bottom: 16px;
     height: 1040px; 
-  overflow-y: auto;
-  scrollbar-width: thin; 
-  scrollbar-color: transparent transparent; 
-  &::-webkit-scrollbar {
-    width: 6px; 
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: transparent; 
-  }
+    overflow-y: auto;
+    scrollbar-width: thin; 
+    scrollbar-color: transparent transparent; 
+    &::-webkit-scrollbar {
+      width: 1px; 
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 20px;
+      background-color: ${(props) => props.theme.color.primary_green_lite};
+    }
     
 
     & > :nth-last-child(-n + 2) {
@@ -57,8 +60,6 @@ export const Container = styled.div`
       line-height: 1.5;
       width: 676px;
       display: flex;
-      
-     
     }
   }
 
@@ -136,8 +137,6 @@ export const StyledImg = styled.img`
     width: 536px;
     margin-right: 0;
     margin-left: 110px;
- 
-   
   }
 `;
 

@@ -138,7 +138,7 @@ export const updateUserAvatar = createAsyncThunk(
             'Content-Type': 'multipart/form-data',
           },
         });
-            toast.success('Your User avatar has been successfully updated');
+            toast.info('Your User avatar has been successfully updated');
             return response.data;
         } catch (error) {
             toast.error('Oops. Something went wrong. Please try again.');

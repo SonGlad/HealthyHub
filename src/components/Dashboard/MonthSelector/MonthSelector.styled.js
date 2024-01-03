@@ -77,7 +77,7 @@ export const Container = styled.div`
     font-style: normal;
     text-align: start;
     width: 100%;
-    padding-left: 16px;
+    /* padding-left: 16px; */
     font-weight: 400;
     line-height: 1.4;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -92,21 +92,24 @@ export const Container = styled.div`
       color: ${props => props.theme.color.primary_green_lite};
     }
 
-    &:last-child {
+    /* &:last-child {
       margin-bottom: 10px;
-    }
+    } */
   }
 
   .list {
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    padding-top: 12px;
     margin-top: 14px;
+    border-top: 12px solid ${props => props.theme.color.primary_black_2};
+    border-right: 1px solid ${props => props.theme.color.primary_black_2};
+    border-bottom: 8px solid ${props => props.theme.color.primary_black_2};
+    border-radius: 12px;
+    padding-left: 16px;
     gap: 6px;
     width: 212px;
     height: 144px;
-    border-radius: 12px;
     background: ${props => props.theme.color.primary_black_2};
     box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
     overflow-y: auto;
@@ -131,7 +134,6 @@ export const Container = styled.div`
 
   .select .open {
     height: 144px;
-    /* top: 50%; */
     top: 25px;
     z-index: 1;
     visibility: visible;
@@ -140,17 +142,12 @@ export const Container = styled.div`
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  *::-webkit-scrollbar {
-    display: none;
+  ::-webkit-scrollbar {
+    width: 1px;
   }
-
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: transparent transparent;
-  }
-
-  *::-moz-scrollbar {
-    display: none;
+  ::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: ${(props) => props.theme.color.primary_grey};
   }
 `;
 

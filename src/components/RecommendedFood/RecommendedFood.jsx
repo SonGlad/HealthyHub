@@ -1,21 +1,23 @@
 import { Section } from 'components/Section/Section';
-
+import { Container, ContentWrapper,DesctopContainer,StyledImg,ProductsList } from './RecommendedFood.styled';
 import SnacksImg from '../../images/svgIcon/snack-img.svg';
 import RecommendedFoodPhoto from '../../images/images/Ketogenic-diet.png'
-
-import { Container, ContentWrapper,DesctopContainer,StyledImg,ProductsList } from './RecommendedFood.styled';
-import { useData } from '../../hooks/useUserData';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { useData } from '../../hooks/useUserData';
 import { getAllRecommendedFood } from '../../redux/Data/data-operations';
+
 
 export const RecommendedFood = () => {
   const { recommendedFood } = useData()
-  const dispatch = useDispatch()
-   useEffect(() => {
-      dispatch(getAllRecommendedFood());
-    
+  const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    dispatch(getAllRecommendedFood());
   }, [dispatch]);
+
+
   return (
     <Section>
       <Container>

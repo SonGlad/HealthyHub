@@ -1,4 +1,3 @@
-
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { modalReducer } from '../redux/Modal/modal-slice';
 import { authReducer } from './Auth/auth-slice';
@@ -20,7 +19,8 @@ const authPersistConfig = {
   key: "auth",
   storage,
   whitelist: [
-    'token', 
+    'token',
+    'currentLocation', 
     // 'userForm', 
     // 'goalForm', 
     // 'bodyParamFormWeight',

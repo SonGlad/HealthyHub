@@ -42,38 +42,21 @@ export const Container = styled.div`
 
 export const ChartWrapper = styled.div`
   display: flex;
-  align-items: center;
   flex-direction: column;
   justify-content: flex-end;
-  gap: 6px;
   border-radius: 20px;
   border: 1px solid #292928;
   background: ${props => props.theme.color.primary_black_2};
   min-width: 80px;
   height: 192px;
   padding: 8px;
-  
-
-  p {
-    color: ${props => props.theme.color.primary_violet};
-    height: ${props => props.height}%;
-    text-align: center;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 1.4;
-    position: absolute;
-    top: 520px;
-
-    @media screen and (min-width: 834px) {
-      top: 350px;
-    }
-    @media screen and (min-width: 1440px) {
-      top: 340px;
-    }
-  }
 `;
 
 export const ColoredArea = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
   border-radius: 20px;
   background: ${props => props.theme.color.primary_violet};
   box-shadow: 0px 4px 8px 0px rgba(255, 255, 255, 0.12),
@@ -81,6 +64,18 @@ export const ColoredArea = styled.div`
   width: 100%;
   height: ${props => props.height}%;
   transition: height 0.5s ease-in-out;
+
+
+  
+  p {
+    color: ${props => props.theme.color.primary_violet};
+    height: ${props => (props.height > 54 ? '100px' : '115px')};
+    position: absolute;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
 `;
 
 

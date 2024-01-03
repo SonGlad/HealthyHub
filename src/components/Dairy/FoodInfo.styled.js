@@ -119,7 +119,11 @@ export const DishesWrapper = styled.div`
   height: 240px;
 
   &::-webkit-scrollbar {
-    display: none;
+    width: 1px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: ${(props) => props.theme.color.primary_green_lite};
   }
 
   @media screen and (min-width: 834px) {

@@ -1,27 +1,31 @@
-import React, { useState } from 'react';
 import { ModalContainer } from './RecordDiaryModal.styled';
-import { useFormik } from 'formik';
-import { nanoid } from 'nanoid';
-import { useModal } from 'hooks/useModal';
 import { ReactComponent as BreakfastImg } from '../../../images/icons-illustration/breakfast-image.svg';
 import { ReactComponent as LunchImg } from '../../../images/icons-illustration/lunch-image.svg';
 import { ReactComponent as DinnerImg } from '../../../images/icons-illustration/dinner-image.svg';
 import { ReactComponent as SnacksImg } from '../../../images/icons-illustration/snack-image.svg';
+import { useFormik } from 'formik';
+import { nanoid } from 'nanoid';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useModal } from 'hooks/useModal';
 import { addFood } from '../../../redux/Data/data-operations';
+
 
 export const RecordDiaryModal = ({ handleClickClose }) => {
   const dispatch = useDispatch();
   const [forms, setForms] = useState([nanoid()]);
   const { mealType } = useModal();
 
+
   const handleAddForm = () => {
     const id = nanoid();
     setForms(prevForms => [...prevForms, id]);
   };
+
   const handleRemoveForm = id => {
     setForms(prevForms => prevForms.filter(formId => formId !== id));
   };
+
 
   const { values, isValid, touched, handleBlur, handleChange, resetForm } =
     useFormik({
@@ -49,6 +53,7 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
       },
     });
 
+
   const handleConfirm = () => {
     const meals = forms.map(formId => {
       const formDataForForm = { mealId: formId };
@@ -60,11 +65,11 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
       return formDataForForm;
     });
 
+
     const breakfast = { breakfast: { meals } };
     const lunch = { lunch: { meals } };
     const dinner = { dinner: { meals } };
     const snack = { snack: { meals } };
-
     if (mealType === 'breakfast') {
       dispatch(addFood(breakfast));
       resetForm();
@@ -84,15 +89,17 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
     }
   };
 
+
   function capitalizeWords(str) {
     if (!str) {
       return str;
     }
     return str.replace(/\b\w/g, match => match.toUpperCase());
   }
+
+
   const inputString = mealType;
   const result = capitalizeWords(inputString);
-
   const getGoalImage = mealType => {
     if (mealType === 'breakfast') {
       return <BreakfastImg className="Img" />;
@@ -105,6 +112,7 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
     }
   };
 
+
   const handleInput = (e, maxDigits) => {
     e.target.value = e.target.value.replace(/[^0-9]/g, '');
     if (e.target.value.length > maxDigits) {
@@ -112,6 +120,8 @@ export const RecordDiaryModal = ({ handleClickClose }) => {
     }
     handleChange(e);
   };
+
+
 
   return (
     <ModalContainer>

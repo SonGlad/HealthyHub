@@ -1,18 +1,21 @@
 import { Section } from "components/Section/Section";
 import { Container } from "components/Container/Container";
-import setingsPage from "../../images/images/setings-page-png.png";
-import { TitlePage, ProfileContainer } from "./Settings.styled";
-import { useFormik } from "formik";
 import RadioButton from "components/RadioButton/RadioButton";
+import { TitlePage, ProfileContainer } from "./Settings.styled";
+import setingsPage from "../../images/images/setings-page-png.png";
 import {ReactComponent as DownloadIcon} from "../../images/svgIcon/download-new-photo.svg";
+import { useFormik } from "formik";
 import { ValidationSchema } from "../../utils/validationSchemas";
 import { ShowRules } from "utils/showRules";
 import { useAuth } from "hooks/useAuth";
 import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
 import { updateUserInfo, updateUserAvatar } from "../../redux/Auth/auth-operations";
 
 
 const SettingsPage = () => {
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [formChange, setFormChange] = useState(false);
   const dispatch = useDispatch();
   const {userName, 
     userAvatarURL, 
@@ -29,7 +32,6 @@ const SettingsPage = () => {
     errors,
     touched,
     isValid,
-    dirty,
     handleBlur,
     handleChange,
     handleSubmit,
@@ -51,49 +53,75 @@ const SettingsPage = () => {
     },
     
     validationSchema: ValidationSchema,
-  
+
+
     onSubmit: (values) => {
-      const isNewPasswordEmpty = !values.newPassword.trim();
-      const isWeightChanged = values.weight !== userWeight;
+      if(formChange){
+        const isNewPasswordEmpty = !values.newPassword.trim();
+        const isWeightChanged = values.weight !== userWeight;
+        
+        let dataToSend;
+        if (isWeightChanged) {
+          dataToSend = {
+            name: values.name,
+            age: values.age,
+            gender: values.gender,
+            height: values.height,
+            weight: values.weight,
+            activity: values.activity,
+          };
+        } else {
+          dataToSend = {
+            name: values.name,
+            age: values.age,
+            gender: values.gender,
+            height: values.height,
+            activity: values.activity,
+          };
+        }
       
-      let dataToSend;
-      if (isWeightChanged) {
-        dataToSend = {
-          name: values.name,
-          age: values.age,
-          gender: values.gender,
-          height: values.height,
-          weight: values.weight,
-          activity: values.activity,
-        };
-      } else {
-        dataToSend = {
-          name: values.name,
-          age: values.age,
-          gender: values.gender,
-          height: values.height,
-          activity: values.activity,
-        };
+        if (!isNewPasswordEmpty) {
+          dataToSend.newPassword = values.newPassword;
+        }
+        dispatch(updateUserInfo(dataToSend));
+        setTimeout(() => {
+          setFormChange(false);
+        }, 500);
       }
-    
-      if (!isNewPasswordEmpty) {
-        dataToSend.newPassword = values.newPassword;
-      }
-      dispatch(updateUserInfo(dataToSend));
       
-    
-      const formData = new FormData();
-      const avatarFile = values.photo;
-      if (avatarFile) {
+
+      if (selectedFile !== null) {
+        const formData = new FormData();
+        const avatarFile = values.photo;
         formData.append('avatarURL', avatarFile);
         dispatch(updateUserAvatar(formData));
+        setSelectedFile(null);
+        setFormChange(false)
       }
     },
   });
 
 
+  useEffect(() => {
+    if (
+      values.name !== userName ||
+      values.age !== userAge ||
+      values.gender !== userGender ||
+      values.height !== userHeight ||
+      values.weight !== userWeight ||
+      values.activity !== userActivity ||
+      values.newPassword !== "" ||
+      values.confirmPassword !== ""
+    ) {
+      setFormChange(true);
+    } 
+  },[userActivity, userAge, userGender, userHeight, userName, userWeight, values.activity, values.age, values.confirmPassword, values.gender, values.height, values.name, values.newPassword, values.weight]);
+
+
+
   const handleCancel = () => {
     resetForm();
+    setFormChange(false);
   };
 
 
@@ -141,12 +169,13 @@ const SettingsPage = () => {
                   handleChange(event);
                   const file = event.currentTarget.files[0];
                   setValues((prevValues) => ({ ...prevValues, photo: file }));
+                  setSelectedFile(URL.createObjectURL(file));
                 }}
                 onBlur={handleBlur}
               />
               <label className="Label label-for-avatar" htmlFor="photo">
                 <div className="Thumb">
-                  <img className="AvaImg" src={userAvatarURL} alt="userAvatar" />
+                  <img className="AvaImg" src={selectedFile || userAvatarURL} alt="userAvatar" />
                 </div>
                 <div className="DownloadPhoto">
                   <DownloadIcon className="download-svg"/>
@@ -325,7 +354,7 @@ const SettingsPage = () => {
               <button
                 className="SaveButton"
                 type="submit"
-                disabled={!dirty || !values.activity || !isValid}
+                disabled={!isValid || (!formChange && selectedFile === null)}
               >
                 Save
               </button>

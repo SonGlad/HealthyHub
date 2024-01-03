@@ -108,11 +108,11 @@ export const DivSingIn = styled.div`
 
   .InputContainer {
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 32px;
   }
 
   .ButtonNext {
-    margin-top: 20px;
+    margin-top: 8px;
     margin-bottom: 14px;
     border-radius: 12px;
     background: ${props => props.theme.color.primary_green_lite};
