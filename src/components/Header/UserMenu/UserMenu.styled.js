@@ -37,13 +37,12 @@ export const MenuBox = styled.div`
     background-color: transparent;
     top: 60px;
     left: 0px;
-
     opacity: 0;
     visibility: hidden;
     height: 0;
     transform: scaleY(0);
     transition: opacity 0.5s ease,
-      transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), visibility 0.5s ease;
+    transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), visibility 0.5s ease;
 
     &.info-options-active {
       opacity: 1;
@@ -51,6 +50,7 @@ export const MenuBox = styled.div`
       transform: scaleY(1);
     }
   }
+
   .close-button {
     display: flex;
     border-radius: 50%;
@@ -64,6 +64,7 @@ export const MenuBox = styled.div`
     top: 16px;
     right: 16px;
   }
+  
   .close-modal-icon {
     stroke: ${props => props.theme.color.primary_grey};
     transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -141,6 +142,8 @@ export const UserBlock = styled.div`
   }
 
   .arrow-svg {
+    width: 14px;
+    height: 14px;
     stroke: ${props => props.theme.color.primary_green_lite};
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -174,7 +177,6 @@ export const UserInfoContainer = styled.div`
   background-color: red;
   top: 54px;
   right: 0px;
-
   opacity: 0;
   visibility: hidden;
   height: 0;
@@ -189,6 +191,7 @@ export const UserInfoContainer = styled.div`
   @media screen and (min-width: 834px) {
     top: 80px;
   }
+
   &.show-info-container {
     opacity: 1;
     visibility: visible;

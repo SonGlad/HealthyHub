@@ -20,7 +20,6 @@ export const InfoOptions = styled.div`
     z-index: 2;
     top: 80px;
     box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
-
     opacity: 0;
     visibility: hidden;
     height: 0;
@@ -196,7 +195,7 @@ export const InfoBlockWeight = styled.div`
 `;
 
 export const IconContainer = styled.div`
-  padding: 10px;
+  padding: 9px;
   background-color: rgba(255, 255, 255, 0.01);
   border: 1px solid ${props => props.theme.color.primary_grey};
   border-radius: 12px;
@@ -229,16 +228,25 @@ export const InfoBlockText = styled.p`
   font-weight: 500;
   display: flex;
   align-items: center;
-`;
 
-export const ArrowSvg = styled.img`
-  width: 14px;
-  margin-left: 12px;
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  
-  &.arrow-down.show-arrow-top {
-    transform: rotate(180deg);
+  .arrow-svg{
+    stroke: ${p => p.theme.color.primary_green_lite};
+    width: 14px;
+    height: 14px;
+    margin-left: 12px;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &.show-arrow-top {
+      transform: rotate(180deg);
+      stroke: ${p => p.theme.color.primary_white};;
     }
+  }
+
+  .edit-svg{
+    width: 16px;
+    height: 16px;
+    stroke: ${p => p.theme.color.primary_green_lite};
+  }
 `;
 
 export const WeightKg = styled.span`
@@ -248,6 +256,4 @@ export const WeightKg = styled.span`
   margin-left: 4px;
   margin-right: 6px;
 `;
-export const EditSvg = styled.img`
-  width: 16px;
-`;
+

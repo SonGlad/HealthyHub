@@ -1,16 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 const modalSlice = createSlice({
   name: "modal",
   initialState: {
     isModalOpenRecord: false,
     isModalOpenWater: false,
+    isModalUpdateRecord: false,
     mealTypeBreakfast: null,
     isModalCloseUserMenu: false,
     isModalShowGoal: false,
     isModalShowWeight: false,
-    isModalUpdateRecord: false,
   },
+
   reducers: {
     openModalRecord: (state) => {
       state.isModalOpenRecord = true;
@@ -26,6 +28,12 @@ const modalSlice = createSlice({
     },
     showMealType: (state, action) => {
       state.mealTypeBreakfast = action.payload;
+    },
+    openUpdateRecord: (state) => {
+      state.isModalUpdateRecord = true;
+    },
+    closeUpdateRecord: (state) => {
+      state.isModalUpdateRecord = false;
     },
     openModalUserMenu: (state) => {
       state.isModalCloseUserMenu = true;
@@ -44,12 +52,6 @@ const modalSlice = createSlice({
     },
     closeModalWeight: (state) => {
       state.isModalShowWeight = false;
-    },
-    openUpdateRecord: (state) => {
-      state.isModalUpdateRecord = true;
-    },
-    closeUpdateRecord: (state) => {
-      state.isModalUpdateRecord = false;
     },
   },
 });

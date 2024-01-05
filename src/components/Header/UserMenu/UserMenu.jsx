@@ -14,135 +14,130 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useAuth } from '../../../hooks/useAuth';
 import { logOut } from '../../../redux/Auth/auth-operations';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState} from 'react';
 import { ReactComponent as CloseIcon } from '../../../images/icons-linear/close-circle.svg';
 import { ReactComponent as SettingIcon2 } from '../../../images/icons-linear/setting-2.svg';
 import { ReactComponent as LogoutIcon } from '../../../images/icons-linear/logout.svg';
-import { closeModalGoal, closeModalUserMenu, closeModalWeight} from '../../../redux/Modal/modal-slice';
-import { openModalUserMenu } from '../../../redux/Modal/modal-slice';
+import { closeModalUserMenu, openModalUserMenu } from '../../../redux/Modal/modal-slice';
+import { closeModalWeight, closeModalGoal } from '../../../redux/Modal/modal-slice';
+import { useModal } from 'hooks/useModal';
 
 
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
   const { userName, userAvatarURL } = useAuth();
-  const refBackdrop = useRef(null);
-  const refButtonArrowDown = useRef(null);
-  const userInfoContainer = useRef(null);
-  const [isOptionsListMenu, setIsOptionsListMenu] = useState(false);
-  const [isOpenUserInfoContainer, setIsOpenUserInfoContainer] = useState(false);
+  const {isModalCloseUserMenu} = useModal();
+  const userInfoBlock = useRef(null);
+  const menuBox = useRef(null);
+  const targetBlockRef = useRef(null);
+  const weightBlockRef = useRef(null);
+  const [isMenuBox, setIsMenuBox] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
 
-  const handleClickArrowMenu = () => {
-    if (isOpenUserInfoContainer) {
-      dispatch(closeModalUserMenu());
-    } else {
+  // FOR USER MENU TOGGLE////////
+  const toggleUserMenuDrop = () => {
+    if(!isModalCloseUserMenu){
       dispatch(openModalUserMenu());
+    } else {
+      dispatch(closeModalUserMenu());
     }
   };
+  // ///////////////////////////
 
 
-  const handleClickByIconMenu = event => {
-    event.stopPropagation();
-    setIsOptionsListMenu(prevState => !prevState);
-    setIsOpenUserInfoContainer(false);
+  // FOR LOGOUT//////////////////
+  const LogOut = () => {
+    dispatch(closeModalUserMenu());
+    setTimeout(() => {
+      dispatch(logOut());
+    },250)
   };
+  // /////////////////////////////
 
 
-  const onButtonClose = () => {
-    setIsOptionsListMenu(!isOptionsListMenu);
+  // FOR MOBILE MENU BOX//////////
+  const toggleMenuBox = () => {
+    if(isMenuBox){
+      setIsMenuBox(false);
+    } else {
+      setIsMenuBox(true);
+    }
   };
+  const closeMenuBoxonBtnClick = () => {
+    setIsMenuBox(false);
+    dispatch(closeModalWeight());
+    dispatch(closeModalGoal());
+  };
+  // ////////////////////////////
 
 
-  const toggleShowOptionsMenu = () =>
-    isOptionsListMenu ? 'info-options-active' : '';
-  const toggleShowUserInfoContainer = () =>
-    isOpenUserInfoContainer ? 'show-info-container' : '';
-  const toggleRotateArrowButton = () =>
-    isOpenUserInfoContainer ? 'arrow-svg-close' : '';
-
-
-  const handleBackdropClick = useCallback(event => {
-    if (refBackdrop.current && !refBackdrop.current.contains(event.target)) {
-      setIsOptionsListMenu(false);
+  // HANDLE KEY PRESS//////////////
+  const handleKeyPress = useCallback(event => {
+    if (event.key === 'Escape') {
+      dispatch(closeModalUserMenu());
+      setIsMenuBox(false);
     }
-    if (
-      userInfoContainer.current &&
-      !userInfoContainer.current.contains(event.target)
-    ) {
-      setIsOpenUserInfoContainer(false);
+  },[dispatch]);
+  // ///////////////////////////
+
+
+  // TOGGLE FOR CLASS CHANGE////
+  const toggleUserMenuDropCont = () => {
+    return isModalCloseUserMenu ? 'show-info-container' : '';
+  };
+  const toggleUserMenuDropArrow = () => {
+    return isModalCloseUserMenu ? 'arrow-svg-close' : '';
+  };
+  const toggleMenuBoxDropMenu = () => {
+    return isMenuBox ? 'info-options-active' : '';
+  };
+  // //////////////////////////
+
+
+  // BACKDROP CLICK///////////
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+  const handleBackgroundClick = useCallback(event => {
+    if (userInfoBlock.current && !userInfoBlock.current.contains(event.target)) {
+      dispatch(closeModalUserMenu());
     }
-  }, []);
-
-
-  const handleClickButtonArrow = useCallback(
-    event => {
-      if (
-        refButtonArrowDown.current &&
-        refButtonArrowDown.current.contains(event.target)
-      ) {
-        event.stopPropagation();
+    if(windowWidth < 834){
+      if(menuBox.current && !menuBox.current.contains(event.target)) {
+        setIsMenuBox(false);
         dispatch(closeModalGoal());
         dispatch(closeModalWeight());
-        setIsOpenUserInfoContainer(prevState => !prevState);
-        setIsOptionsListMenu(false);
       }
-    },
-    [dispatch]
-  );
+    } 
+  },[dispatch, windowWidth]); 
+  // //////////////////////////
 
-
-  const handleEscapeKey = useCallback(event => {
-    if (event.key === 'Escape') {
-      setIsOpenUserInfoContainer(false);
-    }
-  }, []);
-
-
+  
   useEffect(() => {
-    document.addEventListener('click', handleBackdropClick);
-    document.addEventListener('click', handleClickButtonArrow);
-    document.addEventListener('keydown', handleEscapeKey);
+    window.addEventListener('resize', handleResize);
+    document.addEventListener('keydown', handleKeyPress);
+    document.addEventListener('click', handleBackgroundClick);
 
     return () => {
-      document.removeEventListener('click', handleBackdropClick);
-      document.removeEventListener('click', handleClickButtonArrow);
-      document.removeEventListener('keydown', handleEscapeKey);
+      window.removeEventListener('resize', handleResize);
+      document.removeEventListener('keydown', handleKeyPress);
+      document.removeEventListener('click', handleBackgroundClick);
     };
-  }, [handleClickButtonArrow, handleBackdropClick, handleEscapeKey]);
+  },[handleBackgroundClick, handleKeyPress]);
 
-
-  useEffect(() => {
-    const handleKeyDown = event => {
-      if (event.key === 'Escape') {
-        dispatch(closeModalUserMenu());
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [dispatch]);
 
 
   return (
     <Container>
-      <MenuBox className="menu-box">
-        <MenuButton onClick={handleClickByIconMenu}>
+      <MenuBox className="menu-box" ref={menuBox}>
+        <MenuButton onClick={toggleMenuBox}>
           <MenuIcon className="menu-icon" width={16} height={16} />
         </MenuButton>
-        <div
-          ref={refBackdrop}
-          className={`dropdownList ${toggleShowOptionsMenu()}`}
-        >
+        <div className={`dropdownList ${toggleMenuBoxDropMenu()}`}>
           <ButtonsBlock />
-          <button
-            type="button"
-            className="close-button"
-            onClick={onButtonClose}
-          >
+          <button type="button" className="close-button" onClick={closeMenuBoxonBtnClick}>
             <CloseIcon className="close-modal-icon" width={'16px'} />
           </button>
         </div>
@@ -150,46 +145,26 @@ export const UserMenu = () => {
 
       <Info>
         <div className="mega-div">
-          <ButtonsBlock />
+          <ButtonsBlock targetBlockRef={targetBlockRef} weightBlockRef={weightBlockRef}/>
         </div>
-        <UserBlock>
+        <UserBlock ref={userInfoBlock}>
           <p className="user-name">{userName}</p>
-          <button
-            type="button"
-            ref={refButtonArrowDown}
-            onClick={handleClickButtonArrow}
-            className="user-menu-btn"
-          >
+          <button className="user-menu-btn" type="button" onClick={toggleUserMenuDrop}>
             <div className="for-user-avater">
               <AvaImg src={userAvatarURL} alt="avatar" />
             </div>
-            <ArrowDown
-              onClick={handleClickArrowMenu}
-              className={`arrow-svg ${toggleRotateArrowButton()}`}
-              width={14}
-              height={14}
-            />
+            <ArrowDown className={`arrow-svg ${toggleUserMenuDropArrow()}`}/>
           </button>
-          <UserInfoContainer
-            ref={userInfoContainer}
-            className={`wrapper-user-menu ${toggleShowUserInfoContainer()}`}
-          >
+          <UserInfoContainer className={toggleUserMenuDropCont()}>
             <ul className="list-user-menu">
               <li className="item-user-menu">
-                <NavLink
-                  className="link-setting"
-                  to="/settings"
-                  onClick={() => setIsOpenUserInfoContainer(false)}
-                >
+                <NavLink className="link-setting" to="/settings" onClick={toggleUserMenuDrop}>
                   <SettingIcon2 className="setting-icon" />
                   Setting
                 </NavLink>
               </li>
               <li className="item-user-menu">
-                <button
-                  className="button-link-logout"
-                  onClick={() => dispatch(logOut())}
-                >
+                <button className="button-link-logout" onClick={LogOut}>
                   <LogoutIcon className="logout-icon" />
                   Log out
                 </button>
