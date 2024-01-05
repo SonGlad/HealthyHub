@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/HealthyHub/static/css/main.1a24fdc4.css",
-    "main.js": "/HealthyHub/static/js/main.76981f1f.js",
+    "main.js": "/HealthyHub/static/js/main.d8b9fc62.js",
     "static/js/277.487dc7cb.chunk.js": "/HealthyHub/static/js/277.487dc7cb.chunk.js",
     "static/js/788.87f33278.chunk.js": "/HealthyHub/static/js/788.87f33278.chunk.js",
     "static/js/859.d61b7cab.chunk.js": "/HealthyHub/static/js/859.d61b7cab.chunk.js",
@@ -22,7 +22,6 @@
     "static/media/setings-page-png.png": "/HealthyHub/static/media/setings-page-png.f1d82cc7595a1839568b.png",
     "static/media/Ketogenic-diet.png": "/HealthyHub/static/media/Ketogenic-diet.4d015df21b58bf7bc690.png",
     "static/media/main-page-img-desc.png": "/HealthyHub/static/media/main-page-img-desc.9ae292fdb8b61e565201.png",
-    "static/media/Waight-image.svg": "/HealthyHub/static/media/Waight-image.77cd4e76c2c3f67e31c01416852989e1.svg",
     "static/media/YourGoalComputer-min.png": "/HealthyHub/static/media/YourGoalComputer-min.626e188c1dcc27a455cc.png",
     "static/media/YourActivityComputer-3-min.png": "/HealthyHub/static/media/YourActivityComputer-3-min.40522e95eb7ed60d280b.png",
     "static/media/SelectGenderComputer-min.png": "/HealthyHub/static/media/SelectGenderComputer-min.96aa7dabf7c6c4b4765c.png",
@@ -41,8 +40,8 @@
     "static/media/download-new-photo.svg": "/HealthyHub/static/media/download-new-photo.8d5afe13d0769fda2bafebe347589add.svg",
     "static/media/setting-2.svg": "/HealthyHub/static/media/setting-2.82cd143f917738cc63d206f21def1a15.svg",
     "static/media/bubble.svg": "/HealthyHub/static/media/bubble.def62834876d170a381e2ea3cf15a89a.svg",
-    "static/media/edit-2.svg": "/HealthyHub/static/media/edit-2.9b966bb2899c1ade6c6ce14e12270a08.svg",
     "static/media/edit.svg": "/HealthyHub/static/media/edit.f70fa87c2f720e264418b093b9658013.svg",
+    "static/media/edit-2.svg": "/HealthyHub/static/media/edit-2.a93675f14ce0cf008f1fac32827ef466.svg",
     "static/media/trash.svg": "/HealthyHub/static/media/trash.221b65d785a26727231004fdfe3b8e13.svg",
     "static/media/eye-off.svg": "/HealthyHub/static/media/eye-off.3eeefa01255069975a3030e4adf6f59a.svg",
     "static/media/error.svg": "/HealthyHub/static/media/error.61e13a53a3b33302d8a9d981674b9012.svg",
@@ -54,13 +53,13 @@
     "static/media/logout.svg": "/HealthyHub/static/media/logout.2cf5b6658fe325ce6f6c621b00153408.svg",
     "static/media/arrow-right-icon.svg": "/HealthyHub/static/media/arrow-right-icon.3de19dffade623385752ad3f3804c425.svg",
     "static/media/correct.svg": "/HealthyHub/static/media/correct.f951abc33a082eef0ae77b954eda0542.svg",
-    "static/media/arrow-down.svg": "/HealthyHub/static/media/arrow-down.e3ed7849216bb46de413bbb56a4a7bcf.svg",
     "static/media/close-circle.svg": "/HealthyHub/static/media/close-circle.989e4b11cf9587901ee192856f305228.svg",
+    "static/media/arrow-down.svg": "/HealthyHub/static/media/arrow-down.e3ed7849216bb46de413bbb56a4a7bcf.svg",
     "static/media/add.svg": "/HealthyHub/static/media/add.91852336d1463e57d73ca07de9666af8.svg",
     "static/media/add-modal.svg": "/HealthyHub/static/media/add-modal.9569066a7c71bf08ffe95131a13966e2.svg",
     "static/media/ellipse.svg": "/HealthyHub/static/media/ellipse.0c3b26195344141055a912afab60b9a7.svg",
     "main.1a24fdc4.css.map": "/HealthyHub/static/css/main.1a24fdc4.css.map",
-    "main.76981f1f.js.map": "/HealthyHub/static/js/main.76981f1f.js.map",
+    "main.d8b9fc62.js.map": "/HealthyHub/static/js/main.d8b9fc62.js.map",
     "277.487dc7cb.chunk.js.map": "/HealthyHub/static/js/277.487dc7cb.chunk.js.map",
     "788.87f33278.chunk.js.map": "/HealthyHub/static/js/788.87f33278.chunk.js.map",
     "859.d61b7cab.chunk.js.map": "/HealthyHub/static/js/859.d61b7cab.chunk.js.map",
@@ -76,6 +75,6 @@
   },
   "entrypoints": [
     "static/css/main.1a24fdc4.css",
-    "static/js/main.76981f1f.js"
+    "static/js/main.d8b9fc62.js"
   ]
 }
