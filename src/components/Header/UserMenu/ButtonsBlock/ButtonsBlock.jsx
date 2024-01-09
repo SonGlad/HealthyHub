@@ -82,6 +82,9 @@ export const ButtonsBlock = forwardRef(({targetBlockRef, weightBlockRef}, ref) =
   const toggleWeightDrop = () => {
     return (isModalShowWeight ? 'show-weight-selection' : '');
   };
+  const stopPropagation = (event) => {
+    event.stopPropagation();
+  };
   // ///////////////////////////////
 
 
@@ -168,7 +171,7 @@ export const ButtonsBlock = forwardRef(({targetBlockRef, weightBlockRef}, ref) =
           </InfoBlockText>
         </TextContainer>
       </InfoBlockTarget>
-      <div className={`target-dropdown ${toggleGoalDrop()}`}>
+      <div className={`target-dropdown ${toggleGoalDrop()}`} onClick={stopPropagation}>
         <TargetDrop />
         <button className="target-close-btn" type="button" onClick={showGoalDropBtnClose}>
           <CloseIcon className="close-target-icon" width={'16px'} />
@@ -188,7 +191,7 @@ export const ButtonsBlock = forwardRef(({targetBlockRef, weightBlockRef}, ref) =
           </InfoBlockText>
         </TextContainer>
       </InfoBlockWeight>
-      <div className={`weight-dropdown ${toggleWeightDrop()}`}>
+      <div className={`weight-dropdown ${toggleWeightDrop()}`} onClick={stopPropagation}>
         <button className="weight-close-btn" type="button" onClick={showWeightDropBtnClose}>
           <CloseIcon className="close-weight-icon" width={'16px'} />
         </button>
