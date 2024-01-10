@@ -4,6 +4,8 @@ export const selectUserDailyCalories = state => state.data.dailyCaloriesLimit;
 
 export const selectUserDailyWater = state => state.data.dailyWaterLimit;
 
+export const selectForSound = state => state.data.forSound;
+
 export const selectUserDailyCarbonohidrates = state => state.data.dailyNutritionLimit.carbonohidrates;
 
 export const selectUserDailyProtein = state => state.data.dailyNutritionLimit.protein;

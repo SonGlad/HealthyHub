@@ -72,6 +72,7 @@ const initialState = {
 
     error: null,
     isLoading: false,
+    forSound: null,
 };
 
 
@@ -183,15 +184,19 @@ const dataSlice = createSlice({
         .addCase(addWaterIntake.pending, state => {
             state.isLoading = true;
             state.error = null;
+            state.forSound = false;
         })
         .addCase(addWaterIntake.fulfilled, (state, { payload }) => {
             state.userCurrentWater = payload.water;
             state.isLoading = false;
             state.error = null;
+            state.forSound = true;
+            console.log(state.forSound);
         })
         .addCase(addWaterIntake.rejected, (state, { payload }) => {
             state.isLoading = false;
             state.error = payload;
+            state.forSound = false;
         })
 
 
@@ -199,15 +204,18 @@ const dataSlice = createSlice({
         .addCase(deleteWaterIntake.pending, state => {
             state.isLoading = true;
             state.error = null;
+            state.forSound = false;
         })
         .addCase(deleteWaterIntake.fulfilled, (state, { payload }) => {
             state.userCurrentWater = null;
             state.isLoading = false;
             state.error = null;
+            state.forSound = false;
         })
         .addCase(deleteWaterIntake.rejected, (state, { payload }) => {
             state.isLoading = false;
             state.error = payload;
+            state.forSound = false;
         })
 
             
@@ -568,6 +576,7 @@ const dataSlice = createSlice({
             };
             state.isLoading = false;
             state.error = null;
+            state.forSound = false;
         })
         .addCase(logOut.rejected, (state, {payload}) => {
             state.isLoading = false;

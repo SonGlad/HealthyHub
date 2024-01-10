@@ -37,6 +37,7 @@ const dataPersistConfig = {
   key: 'data',
   storage,
   whitelist: [
+    'forSound'
      // 'dailyNutritionLimit',
     // 'dailyCaloriesLimit',
     // 'dailyWaterLimit',

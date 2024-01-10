@@ -33,8 +33,9 @@ import {
     selectSnackTotalProtein,
     selectSnackhTotalCarbonohidretes,
     selectStatisticsWater,
-selectStatisticsWeight,
-selectStatisticsCalories,
+    selectStatisticsWeight,
+    selectStatisticsCalories,
+    selectForSound,
 } from "../redux/Data/data-selectors.js"
 
 
@@ -80,6 +81,8 @@ export const useData = () => {
     const statisticsWeight = useSelector(selectStatisticsWeight);
     const statisticsCalories = useSelector(selectStatisticsCalories);
 
+    const isForSound = useSelector(selectForSound);
+
     return {
         isLoadingData,
         dailyCaloriesLimit,
@@ -116,7 +119,7 @@ export const useData = () => {
         statisticsWater, 
         statisticsWeight,
         statisticsCalories,
-
+        isForSound,
     }
 };
 

@@ -27,8 +27,21 @@ export const Container = styled.div`
     gap: 20px;
     align-items: center;
 
+    .buble-svg{
+      display: block;
+    }
 
     .bubble-div{
+      display: none;
+    }
+  
+    @media screen and (min-width: 834px) {
+      .buble-svg{
+      display: none;
+    }
+
+      .bubble-div{
+      display: block;
       position: relative;
       width: 80px;
       height: 80px;
@@ -52,8 +65,7 @@ export const Container = styled.div`
         z-index: 1;
       }
     }
-  
-    @media screen and (min-width: 834px) {
+
       .buble-1 {
         -webkit-animation: linear infinite both;
         animation: slide-out-top-buble-1 3s linear infinite both;
@@ -326,5 +338,132 @@ export const Container = styled.div`
     font-weight: 400;
     line-height: 1.4;
     margin-left: 4px;
+  }
+
+
+  @media screen and (min-width: 834px) {
+    .li-for-bottle{
+      position: relative;
+
+      .drops-container{
+        opacity: 1;
+        visibility: visible;
+        position: absolute;
+        margin-left: -50px;
+        width: 180px;
+        height: 100px;
+      }
+
+      .quadratic-poly-bezier-curve-svg2{
+        position: absolute;
+      }
+      
+      .fall-parameters {
+        /* border: 1px solid blue; */
+        height: 90%;
+        position: absolute;
+        width: 30%;
+        left: 20%;
+      }
+
+      /* customisable properties */
+      .second {
+        height: 95%;
+        left: 50%;
+      }
+
+      .second .droplet {
+        animation-delay: 2.7s;
+      }
+
+      .second .circle {
+        animation-delay: 4.7s;
+      }
+      /*--------------------------*/
+
+      @keyframes fallAnimation {
+        0% {
+          top: 22px;
+          width: 3px;
+          height: 3px;
+          transform: translate(0px, 8px);
+          opacity: 1;
+        }
+        20% {
+          width: 3px;
+          height: 6px;
+        }
+        40% {
+          width: 3px;
+          height: 7px;
+        }
+        80% {
+          width: 2px;
+          height: 8px;
+        }
+        90%{
+          width: 1px;
+          height: 8px;
+          opacity: 1;  
+        }
+        100% {
+          top: 95%;
+          width: 10px;
+          height: 1px;
+          opacity: 0;
+        }
+      }
+
+      .droplet {
+        animation: fallAnimation 2s linear infinite;
+        animation-delay: 1.8s;
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        box-shadow: 0 0 50px 5px #45FFBC;
+        background: #B6C3FF;
+        position: absolute;
+        top: 33px;
+        left: -1px;
+        right: 0;
+        margin: 0 auto;
+        opacity: 0;
+      }
+
+      .droplet-parameters {
+        /* border: 1px solid grey; */
+        width: 100%;
+        height: 10%;
+        position: absolute;
+        bottom: 0;
+      }
+
+      @keyframes expand {
+        from {
+          width: 0%;
+          height: 0%;
+          opacity: 1;
+        }
+        to {
+          width: 100%;
+          height: 100%;
+          opacity: 0; 
+        }
+      }
+
+      .circle {
+        animation: expand 2s infinite;
+        animation-delay: 3.7s;
+        opacity: 0;
+        border: 1px solid #B6C3FF;
+        border-radius: 50%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+      }
+    }
   }
 `;
