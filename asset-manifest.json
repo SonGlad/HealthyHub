@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/HealthyHub/static/css/main.1a24fdc4.css",
-    "main.js": "/HealthyHub/static/js/main.f5fd62b4.js",
-    "static/js/766.579bd117.chunk.js": "/HealthyHub/static/js/766.579bd117.chunk.js",
+    "main.js": "/HealthyHub/static/js/main.8643baa3.js",
+    "static/js/766.efef63a2.chunk.js": "/HealthyHub/static/js/766.efef63a2.chunk.js",
     "static/js/788.87f33278.chunk.js": "/HealthyHub/static/js/788.87f33278.chunk.js",
     "static/js/859.d61b7cab.chunk.js": "/HealthyHub/static/js/859.d61b7cab.chunk.js",
     "static/js/152.97a75771.chunk.js": "/HealthyHub/static/js/152.97a75771.chunk.js",
@@ -62,8 +62,8 @@
     "static/media/add-modal.svg": "/HealthyHub/static/media/add-modal.9569066a7c71bf08ffe95131a13966e2.svg",
     "static/media/ellipse.svg": "/HealthyHub/static/media/ellipse.0c3b26195344141055a912afab60b9a7.svg",
     "main.1a24fdc4.css.map": "/HealthyHub/static/css/main.1a24fdc4.css.map",
-    "main.f5fd62b4.js.map": "/HealthyHub/static/js/main.f5fd62b4.js.map",
-    "766.579bd117.chunk.js.map": "/HealthyHub/static/js/766.579bd117.chunk.js.map",
+    "main.8643baa3.js.map": "/HealthyHub/static/js/main.8643baa3.js.map",
+    "766.efef63a2.chunk.js.map": "/HealthyHub/static/js/766.efef63a2.chunk.js.map",
     "788.87f33278.chunk.js.map": "/HealthyHub/static/js/788.87f33278.chunk.js.map",
     "859.d61b7cab.chunk.js.map": "/HealthyHub/static/js/859.d61b7cab.chunk.js.map",
     "152.97a75771.chunk.js.map": "/HealthyHub/static/js/152.97a75771.chunk.js.map",
@@ -78,6 +78,6 @@
   },
   "entrypoints": [
     "static/css/main.1a24fdc4.css",
-    "static/js/main.f5fd62b4.js"
+    "static/js/main.8643baa3.js"
   ]
 }
