@@ -373,11 +373,11 @@ export const Container = styled.div`
       }
 
       .second .droplet {
-        animation-delay: 2.7s;
+        animation-delay: 2.8s;
       }
 
       .second .circle {
-        animation-delay: 4.7s;
+        animation-delay: 4.8s;
       }
       /*--------------------------*/
 
